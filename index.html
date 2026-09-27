@@ -1,429 +1,988 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pet Product | Everything Your Pet Needs</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<title>Pet Product | Cat Care & Pet Supplies</title>
 
-    body {
-      background: #fffaf5;
-      color: #222;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
+}
 
-    header {
-      background: white;
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    .logo {
-      font-size: 26px;
-      font-weight: bold;
-      color: #ff6b35;
-    }
+body{
+  background:#fffaf5;
+  color:#202124;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #333;
-      margin-left: 28px;
-      font-weight: 500;
-    }
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#fff;
+  border-bottom:1px solid #eee;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    .hero {
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 70px 7%;
-      background: #fff1e8;
-    }
+.logo{
+  font-size:25px;
+  font-weight:800;
+  color:#ff6b35;
+}
 
-    .hero-text {
-      max-width: 560px;
-    }
+nav a{
+  color:#333;
+  text-decoration:none;
+  margin-left:25px;
+  font-weight:600;
+}
 
-    .hero-text span {
-      color: #ff6b35;
-      font-weight: bold;
-      font-size: 15px;
-    }
+.hero{
+  background:linear-gradient(135deg,#fff0e7,#fff9f4);
+  padding:80px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  min-height:570px;
+}
 
-    .hero h1 {
-      font-size: 58px;
-      line-height: 1.08;
-      margin: 18px 0;
-    }
+.hero-content{
+  max-width:650px;
+}
 
-    .hero p {
-      font-size: 18px;
-      line-height: 1.7;
-      color: #666;
-      margin-bottom: 30px;
-    }
+.badge{
+  display:inline-block;
+  background:#ffe2d3;
+  color:#e95724;
+  padding:9px 15px;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:bold;
+}
 
-    .btn {
-      display: inline-block;
-      background: #ff6b35;
-      color: white;
-      padding: 15px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.hero h1{
+  font-size:60px;
+  line-height:1.05;
+  margin:20px 0;
+}
 
-    .hero-image {
-      font-size: 180px;
-    }
+.hero p{
+  font-size:18px;
+  line-height:1.7;
+  color:#666;
+  margin-bottom:30px;
+}
 
-    section {
-      padding: 70px 7%;
-    }
+.btn{
+  display:inline-block;
+  background:#ff6b35;
+  color:white;
+  text-decoration:none;
+  padding:15px 27px;
+  border-radius:30px;
+  font-weight:bold;
+  margin-right:8px;
+}
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.btn.dark{
+  background:#222;
+}
 
-    .section-title h2 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
+.hero-cat{
+  font-size:190px;
+}
 
-    .section-title p {
-      color: #777;
-    }
+section{
+  padding:75px 7%;
+}
 
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
 
-    .category {
-      background: white;
-      padding: 30px 20px;
-      text-align: center;
-      border-radius: 18px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-      font-size: 22px;
-    }
+.section-title h2{
+  font-size:38px;
+  margin-bottom:10px;
+}
 
-    .category div {
-      font-size: 45px;
-      margin-bottom: 15px;
-    }
+.section-title p{
+  color:#777;
+}
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-    }
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
 
-    .product {
-      background: white;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-    }
+.category{
+  background:white;
+  padding:30px 15px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
 
-    .product-image {
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f7eee8;
-      font-size: 80px;
-    }
+.category-icon{
+  font-size:50px;
+  margin-bottom:15px;
+}
 
-    .product-info {
-      padding: 20px;
-    }
+.products{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
 
-    .product-info h3 {
-      margin-bottom: 8px;
-    }
+.product{
+  background:#fff;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 8px 25px rgba(0,0,0,.07);
+  transition:.2s;
+}
 
-    .price {
-      color: #ff6b35;
-      font-size: 20px;
-      font-weight: bold;
-      margin: 12px 0;
-    }
+.product:hover{
+  transform:translateY(-5px);
+}
 
-    .order-btn {
-      display: block;
-      text-align: center;
-      background: #222;
-      color: white;
-      padding: 11px;
-      border-radius: 10px;
-      text-decoration: none;
-    }
+.product-icon{
+  height:180px;
+  border-radius:16px;
+  background:#fff1e8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:90px;
+  margin-bottom:20px;
+}
 
-    .why {
-      background: #222;
-      color: white;
-    }
+.product h3{
+  font-size:21px;
+  margin-bottom:10px;
+}
 
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
+.product p{
+  color:#777;
+  line-height:1.5;
+}
 
-    .why-card {
-      padding: 30px;
-      background: #2f2f2f;
-      border-radius: 18px;
-    }
+.price{
+  color:#ff6b35;
+  font-size:21px;
+  font-weight:bold;
+  margin:15px 0;
+}
 
-    .why-card h3 {
-      margin: 15px 0 10px;
-    }
+.order{
+  display:block;
+  text-align:center;
+  background:#222;
+  color:#fff;
+  padding:12px;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:bold;
+}
 
-    .why-card p {
-      color: #bbb;
-      line-height: 1.6;
-    }
+.price-list{
+  margin-top:15px;
+}
 
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 35px;
-    }
+.price-list div{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid #eee;
+}
 
-    @media (max-width: 800px) {
-      nav {
-        display: none;
-      }
+.price-list strong{
+  color:#ff6b35;
+}
 
-      .hero {
-        text-align: center;
-        flex-direction: column;
-      }
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
 
-      .hero h1 {
-        font-size: 42px;
-      }
+.service{
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
 
-      .hero-image {
-        margin-top: 40px;
-        font-size: 120px;
-      }
+.service-icon{
+  font-size:45px;
+}
 
-      .categories,
-      .products,
-      .why-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+.service h3{
+  margin:15px 0;
+}
 
-    @media (max-width: 500px) {
-      .categories,
-      .products,
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+.service-price{
+  color:#ff6b35;
+  font-size:20px;
+  font-weight:bold;
+  margin-top:12px;
+}
+
+.dark-section{
+  background:#202124;
+  color:#fff;
+}
+
+.dark-section .section-title p{
+  color:#bbb;
+}
+
+.contact{
+  background:#fff1e8;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+.contact-card{
+  background:white;
+  padding:35px;
+  border-radius:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.contact-card h3{
+  margin-bottom:20px;
+  font-size:25px;
+}
+
+.contact-card p{
+  margin:13px 0;
+  line-height:1.6;
+}
+
+.contact-card a{
+  color:#ff6b35;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+footer{
+  background:#111;
+  color:#aaa;
+  text-align:center;
+  padding:30px;
+}
+
+footer strong{
+  color:#fff;
+}
+
+@media(max-width:900px){
+
+  nav{
+    display:none;
+  }
+
+  .hero{
+    text-align:center;
+    flex-direction:column;
+  }
+
+  .hero h1{
+    font-size:44px;
+  }
+
+  .hero-cat{
+    font-size:120px;
+    margin-top:30px;
+  }
+
+  .categories,
+  .products,
+  .service-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+
+  section{
+    padding:55px 5%;
+  }
+
+  .categories,
+  .products,
+  .service-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:60px 5%;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .btn{
+    margin-bottom:10px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">🐾 Pet Product</div>
+<header>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#shop">Shop</a>
-      <a href="#categories">Categories</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <div class="logo">🐾 Pet Product</div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+</header>
 
 
-  <section class="hero" id="home">
+<!-- HERO -->
 
-    <div class="hero-text">
-      <span>WELCOME TO PET PRODUCT</span>
+<section class="hero" id="home">
 
-      <h1>Everything Your Pet Needs.</h1>
+  <div class="hero-content">
 
-      <p>
-        Discover quality products made to keep your furry friends
-        happy, healthy, and comfortable.
-      </p>
+    <span class="badge">🐱 Cat Care & Pet Supplies</span>
 
-      <a href="#shop" class="btn">Shop Now →</a>
+    <h1>Everything Your Cat Needs, In One Place.</h1>
+
+    <p>
+      Quality cat food, litter, medicine, grooming products,
+      accessories and professional pet care services.
+    </p>
+
+    <a href="#products" class="btn">Shop Products</a>
+
+    <a href="#contact" class="btn dark">Book Appointment</a>
+
+  </div>
+
+  <div class="hero-cat">🐱</div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section>
+
+  <div class="section-title">
+    <h2>Shop Categories</h2>
+    <p>Everything your cat needs for a healthy and happy life.</p>
+  </div>
+
+  <div class="categories">
+
+    <div class="category">
+      <div class="category-icon">🍖</div>
+      <h3>Cat Food</h3>
     </div>
 
-    <div class="hero-image">
-      🐶
+    <div class="category">
+      <div class="category-icon">🪣</div>
+      <h3>Cat Litter</h3>
     </div>
 
-  </section>
-
-
-  <section id="categories">
-
-    <div class="section-title">
-      <h2>Shop By Category</h2>
-      <p>Find everything your pet needs in one place.</p>
+    <div class="category">
+      <div class="category-icon">💊</div>
+      <h3>Medicine</h3>
     </div>
 
-    <div class="categories">
-
-      <div class="category">
-        <div>🍖</div>
-        <h3>Food & Treats</h3>
-      </div>
-
-      <div class="category">
-        <div>🧸</div>
-        <h3>Pet Toys</h3>
-      </div>
-
-      <div class="category">
-        <div>🛏️</div>
-        <h3>Beds & Comfort</h3>
-      </div>
-
-      <div class="category">
-        <div>🦮</div>
-        <h3>Accessories</h3>
-      </div>
-
+    <div class="category">
+      <div class="category-icon">🧴</div>
+      <h3>Shampoo</h3>
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
-  <section id="shop">
+<!-- PRODUCTS -->
 
-    <div class="section-title">
-      <h2>Featured Products</h2>
-      <p>Our popular picks for your furry friends.</p>
-    </div>
+<section id="products">
 
-    <div class="products">
+  <div class="section-title">
+    <h2>Our Products</h2>
+    <p>Quality products for your beloved cats.</p>
+  </div>
 
-      <div class="product">
-        <div class="product-image">🧸</div>
 
-        <div class="product-info">
-          <h3>Pet Chew Toy</h3>
-          <p>Fun and durable toy for your pet.</p>
-          <div class="price">$12.99</div>
-          <a href="#contact" class="order-btn">Order Now</a>
+  <div class="products">
+
+
+    <!-- MAX PET -->
+
+    <div class="product">
+
+      <div class="product-icon">🍖</div>
+
+      <h3>Max Pet Cat Food</h3>
+
+      <p>Quality cat food available in two sizes.</p>
+
+      <div class="price-list">
+        <div>
+          <span>1 KG</span>
+          <strong>৳550</strong>
+        </div>
+
+        <div>
+          <span>3 KG</span>
+          <strong>৳1,550</strong>
         </div>
       </div>
 
-
-      <div class="product">
-        <div class="product-image">🛏️</div>
-
-        <div class="product-info">
-          <h3>Comfort Pet Bed</h3>
-          <p>Soft and comfortable sleeping bed.</p>
-          <div class="price">$24.99</div>
-          <a href="#contact" class="order-btn">Order Now</a>
-        </div>
-      </div>
-
-
-      <div class="product">
-        <div class="product-image">🦮</div>
-
-        <div class="product-info">
-          <h3>Pet Collar</h3>
-          <p>Stylish and comfortable collar.</p>
-          <div class="price">$9.99</div>
-          <a href="#contact" class="order-btn">Order Now</a>
-        </div>
-      </div>
-
-
-      <div class="product">
-        <div class="product-image">🥣</div>
-
-        <div class="product-info">
-          <h3>Pet Food Bowl</h3>
-          <p>Simple and durable feeding bowl.</p>
-          <div class="price">$14.99</div>
-          <a href="#contact" class="order-btn">Order Now</a>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section class="why">
-
-    <div class="section-title">
-      <h2>Why Choose Pet Product?</h2>
-      <p>Everything we do is for happier pets.</p>
-    </div>
-
-    <div class="why-grid">
-
-      <div class="why-card">
-        <div>⭐</div>
-        <h3>Quality Products</h3>
-        <p>We focus on products that are useful, reliable, and pet-friendly.</p>
-      </div>
-
-      <div class="why-card">
-        <div>🚚</div>
-        <h3>Easy Ordering</h3>
-        <p>Choose your product and contact us to place your order.</p>
-      </div>
-
-      <div class="why-card">
-        <div>❤️</div>
-        <h3>Made For Pets</h3>
-        <p>Our store is built around the comfort and happiness of pets.</p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section id="contact">
-
-    <div class="section-title">
-      <h2>Ready to Shop?</h2>
-      <p>Contact us today and place your order.</p>
       <br>
 
-      <a href="https://wa.me/" class="btn">
-        Order on WhatsApp
+      <a class="order"
+         href="https://wa.me/8801705895988">
+         Order on WhatsApp
+      </a>
+
+    </div>
+
+
+    <!-- DROOMS -->
+
+    <div class="product">
+
+      <div class="product-icon">🍖</div>
+
+      <h3>Drools Cat Food</h3>
+
+      <p>Available in 400 GM and 1 KG sizes.</p>
+
+      <div class="price-list">
+
+        <div>
+          <span>400 GM</span>
+          <strong>৳350</strong>
+        </div>
+
+        <div>
+          <span>1 KG</span>
+          <strong>৳700</strong>
+        </div>
+
+      </div>
+
+      <br>
+
+      <a class="order"
+         href="https://wa.me/8801705895988">
+         Order on WhatsApp
+      </a>
+
+    </div>
+
+
+    <!-- KITTY CATCH -->
+
+    <div class="product">
+
+      <div class="product-icon">🐱</div>
+
+      <h3>Kitty Catch Cat Food</h3>
+
+      <p>Nutritious cat food for everyday feeding.</p>
+
+      <div class="price">
+        1 KG — ৳700
+      </div>
+
+      <a class="order"
+         href="https://wa.me/8801705895988">
+         Order on WhatsApp
+      </a>
+
+    </div>
+
+
+    <!-- LITTER -->
+
+    <div class="product">
+
+      <div class="product-icon">🪣</div>
+
+      <h3>Cat Litter</h3>
+
+      <p>Choose the size that works best for you.</p>
+
+      <div class="price-list">
+
+        <div>
+          <span>5 KG</span>
+          <strong>৳260</strong>
+        </div>
+
+        <div>
+          <span>10 KG</span>
+          <strong>৳550</strong>
+        </div>
+
+        <div>
+          <span>25 KG</span>
+          <strong>৳1,250</strong>
+        </div>
+
+      </div>
+
+      <br>
+
+      <a class="order"
+         href="https://wa.me/8801705895988">
+         Order on WhatsApp
+      </a>
+
+    </div>
+
+
+    <!-- CARRYING BAG -->
+
+    <div class="product">
+
+      <div class="product-icon">👜</div>
+
+      <h3>Cat Carrying Bag</h3>
+
+      <p>Convenient carrying bag for travelling with your cat.</p>
+
+      <div class="price">
+        ৳1,400
+      </div>
+
+      <a class="order"
+         href="https://wa.me/8801705895988">
+         Order on WhatsApp
+      </a>
+
+    </div>
+
+
+    <!-- HIMALAYA -->
+
+    <div class="product">
+
+      <div class="product-icon">🧴</div>
+
+      <h3>Himalaya Shampoo</h3>
+
+      <p>Pet grooming shampoo.</p>
+
+      <div class="price">
+        ৳700
+      </div>
+
+      <a class="order"
+         href="https://wa.me/8801705895988">
+         Order on WhatsApp
+      </a>
+
+    </div>
+
+
+    <!-- BENGAL 4 IN 1 -->
+
+    <div class="product">
+
+      <div class="product-icon">🧴</div>
+
+      <h3>Bengal 4-in-1 Shampoo</h3>
+
+      <p>Multi-purpose pet grooming shampoo.</p>
+
+      <div class="price">
+        ৳400
+      </div>
+
+      <a class="order"
+         href="https://wa.me/8801705895988">
+         Order on WhatsApp
+      </a>
+
+    </div>
+
+
+    <!-- BENGAL ANTISEPTIC -->
+
+    <div class="product">
+
+      <div class="product-icon">🧴</div>
+
+      <h3>Bengal Antiseptic</h3>
+
+      <p>Pet care product.</p>
+
+      <div class="price">
+        ৳500
+      </div>
+
+      <a class="order"
+         href="https://wa.me/8801705895988">
+         Order on WhatsApp
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MEDICINE -->
+
+<section class="dark-section">
+
+  <div class="section-title">
+
+    <h2>Pet Medicine</h2>
+
+    <p>
+      Available products and prices.
+      Please consult a qualified veterinarian for proper use.
+    </p>
+
+  </div>
+
+
+  <div class="products">
+
+    <div class="product">
+      <h3>Compet Gastro</h3>
+      <div class="price">৳340</div>
+      <a class="order" href="https://wa.me/8801705895988">
+        Ask About Product
       </a>
     </div>
 
-  </section>
+    <div class="product">
+      <h3>Liki</h3>
+      <div class="price">৳60</div>
+      <a class="order" href="https://wa.me/8801705895988">
+        Ask About Product
+      </a>
+    </div>
+
+    <div class="product">
+      <h3>Zinc</h3>
+      <div class="price">৳60</div>
+      <a class="order" href="https://wa.me/8801705895988">
+        Ask About Product
+      </a>
+    </div>
+
+    <div class="product">
+      <h3>Restolive</h3>
+      <div class="price">৳175</div>
+      <a class="order" href="https://wa.me/8801705895988">
+        Ask About Product
+      </a>
+    </div>
+
+    <div class="product">
+      <h3>Utkid</h3>
+      <div class="price">৳1,200</div>
+      <a class="order" href="https://wa.me/8801705895988">
+        Ask About Product
+      </a>
+    </div>
+
+    <div class="product">
+      <h3>Dr. Pet Me Jell</h3>
+      <div class="price">৳750</div>
+      <a class="order" href="https://wa.me/8801705895988">
+        Ask About Product
+      </a>
+    </div>
+
+  </div>
+
+</section>
 
 
-  <footer>
-    <p>© 2026 Pet Product. All Rights Reserved.</p>
-  </footer>
+<!-- SERVICES -->
+
+<section id="services">
+
+  <div class="section-title">
+
+    <h2>Pet Care Services</h2>
+
+    <p>
+      Professional cat care and veterinary services.
+    </p>
+
+  </div>
+
+
+  <div class="service-grid">
+
+
+    <div class="service">
+
+      <div class="service-icon">✂️</div>
+
+      <h3>Spay</h3>
+
+      <p>Cat spay procedure.</p>
+
+      <div class="service-price">৳5,000</div>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-icon">🐱</div>
+
+      <h3>Neuter</h3>
+
+      <p>Cat neutering service.</p>
+
+      <div class="service-price">৳3,000</div>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-icon">🏥</div>
+
+      <h3>Cat Surgery</h3>
+
+      <p>Surgical care for cats.</p>
+
+      <div class="service-price">৳6,000</div>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-icon">🩺</div>
+
+      <h3>Health Check-up</h3>
+
+      <p>General health check-up.</p>
+
+      <div class="service-price">৳600</div>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-icon">🦴</div>
+
+      <h3>Orthopedic</h3>
+
+      <p>Orthopedic pet care.</p>
+
+      <div class="service-price">৳8,000</div>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-icon">✂️</div>
+
+      <h3>Tom Cat Neuter</h3>
+
+      <p>Neutering service for male cats.</p>
+
+      <div class="service-price">৳3,000</div>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-icon">🏠</div>
+
+      <h3>Home Service</h3>
+
+      <p>Available in Bogura only.</p>
+
+      <div class="service-price">৳1,000</div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- VACCINATION -->
+
+<section class="contact">
+
+  <div class="section-title">
+
+    <h2>💉 Cat Vaccination</h2>
+
+    <p>Protect your cat with proper vaccination care.</p>
+
+  </div>
+
+
+  <div class="products">
+
+    <div class="product">
+
+      <div class="product-icon">💉</div>
+
+      <h3>Rabies Vaccine</h3>
+
+      <div class="price">৳350</div>
+
+      <a class="order"
+         href="https://wa.me/8801705895988">
+         Book Vaccination
+      </a>
+
+    </div>
+
+
+    <div class="product">
+
+      <div class="product-icon">💉</div>
+
+      <h3>Flu Vaccine</h3>
+
+      <div class="price">৳1,300</div>
+
+      <a class="order"
+         href="https://wa.me/8801705895988">
+         Book Vaccination
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+  <div class="section-title">
+
+    <h2>Contact & Serial</h2>
+
+    <p>Call or WhatsApp us to order products or book an appointment.</p>
+
+  </div>
+
+
+  <div class="contact-grid">
+
+
+    <div class="contact-card">
+
+      <h3>📞 Serial / Appointment</h3>
+
+      <p>
+        <strong>Phone 1:</strong><br>
+        <a href="tel:01705895988">01705-895988</a>
+      </p>
+
+      <p>
+        <strong>Phone 2:</strong><br>
+        <a href="tel:01776878713">01776-878713</a>
+      </p>
+
+      <br>
+
+      <a class="btn"
+         href="https://wa.me/8801705895988">
+         💬 WhatsApp
+      </a>
+
+    </div>
+
+
+    <div class="contact-card">
+
+      <h3>📍 Our Location</h3>
+
+      <p>
+        Kalibari Mor,<br>
+        Jaleswaritola,<br>
+        Puran Bogra,<br>
+        Bangladesh - 5800
+      </p>
+
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=Kalibari+Mor+Jaleswaritola+Puran+Bogra+Bangladesh">
+        📍 Open Location
+      </a>
+
+      <br><br>
+
+      <a
+        href="https://www.facebook.com/dpcc.bog">
+        📘 Visit Facebook Page
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <p>
+    © 2026 <strong>Pet Product</strong>.
+    All Rights Reserved.
+  </p>
+
+  <p style="margin-top:8px;">
+    Cat Care • Pet Products • Medicine • Vaccination
+  </p>
+
+</footer>
 
 </body>
 </html>
